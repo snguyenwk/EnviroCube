@@ -1,8 +1,6 @@
 # EnviroCube
 
-Interactive object designed to monitor various environmental conditions.
-
-***
+Interactive Arduino based technology designed to monitor various environmental conditions utilizing sensors and an LED screen for a basic user interface.
 
 ## How to Build
 
