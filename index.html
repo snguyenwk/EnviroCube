@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>EnviroCube</title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@latest"></script>
+        <script src="script.js"></script>
+    </head>
+
+<body>
+    <div class="header">
+        <h1>EnviroCube ❒</h1>
+            <div class="toggle">
+                <button class="toggle-button toggle-dark-mode" onclick="toggleMode()">Dark Mode</button>
+                <button class="toggle-button toggle-temp-unit" onclick="toggleTemp()">Switch to Fahrenheit</button>
+            </div>
+    </div>
+
+    <!-- dashboard/tile code -->
+    <div class="dashboard">
+        <div class="card" onclick="openModal('temp')">
+            <h2>Temperature</h2>
+            <p id="temperature">__ °F</p>
+        </div>
+
+        <div class="card" onclick="openModal('humidity')">
+            <h2>Humidity</h2>
+            <p id="humidity">__ %</p>
+        </div>
+
+        <div class="card" onclick="openModal('air')">
+            <h2>Air Quality</h2>
+            <p id="airQuality">__ AQI</p>
+        </div>
+
+        <div class ="card" onclick="openModal('noise')">
+            <h2>Noise Pollution</h2>
+            <p id="noiseLevel">__ dB</p>
+        </div>
+    </div>
+
+    <!-- modal code -->
+    <div id="modal" style="display: none;">
+        <canvas id="chartCanvas" width="700" height="400"></canvas>
+        <button id="exitGraphButton" onclick="closeModal()">Exit Graph</button>
+    </div>
+</body>
+</html>

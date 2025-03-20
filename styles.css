@@ -1,0 +1,183 @@
+:root {
+    --background-light: #f5f5f7;
+    --background-dark: #1c1c1e;
+    --text-light: #1c1c1e;
+    --text-dark: #f5f5f7;
+    --card-light: #ffffff;
+    --card-dark: #2c2c2e;
+    --accent: #0a84ff;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-light);
+    color: var(--text-light);
+    transition: background-color 0.3s, color 0.3s;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dark-mode {
+    background-color: var(--background-dark);
+    color: var(--text-dark);
+}
+
+.header {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 20px;
+}
+
+.header h1 {
+    font-size: 2rem;
+    margin-left: 120px;
+}
+
+.toggles button {
+    margin-left: 10px;
+    padding: 8px 14px;
+    border: none;
+    background-color: var(--accent);
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.toggles button:hover {
+    background-color: #0066cc;
+}
+
+.dashboard {
+    width: 100%;
+    max-width: 800px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);  
+    grid-template-rows: repeat(2, 1fr);  
+    gap: 20px;
+    padding: 10px;
+    justify-items: center;
+    align-items: center;
+}
+
+.card {
+    width: 100%;
+    max-width: 300px; 
+    background: var(--card-light);
+    border-radius: 30px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s, transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.dark-mode .card {
+    background: var(--card-dark);
+}
+
+.card h2 {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.card p {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: var(--card-light);
+    padding: 20px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .modal-content {
+    background: var(--card-dark);
+}
+
+.close {
+    position: absolute;
+    top: 10px; right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-light);
+}
+
+.dark-mode .close {
+    color: var(--text-dark);
+}
+
+/* Button Styles */
+.toggle-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Mode Button */
+.toggle-dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+
+.toggle-dark-mode:hover {
+    background-color: #555;
+}
+
+/* Temperature Unit Toggle Button */
+.toggle-temp-unit {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+.toggle-temp-unit:hover {
+    background-color: #45a049;
+}
+
+#exitGraphButton {
+    background-color: #ff6347;  /* Tomato color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#exitGraphButton:hover {
+    background-color: #ff4500;  /* Darker shade of red */
+    transform: scale(1.05);  /* Slight scale-up on hover */
+}
+
+#exitGraphButton:active {
+    background-color: #cc3700;  /* Even darker shade on click */
+}
