@@ -220,7 +220,7 @@ function changeCardColors(temp, humidity, air) {
     airCard.style.background = `rgb(${red}, ${green}, 0)`; // red to green gradient
 }
 
-setInterval(simulateData, 60000); // Update every 10 minutes
+setInterval(simulateData, 5000); // Update every 5 seconds (should be every 10 min in final iteration)
 
 function toggleMode() {
     document.body.classList.toggle('dark-mode');
