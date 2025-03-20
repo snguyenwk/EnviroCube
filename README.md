@@ -1,13 +1,27 @@
 # EnviroCube
 
-CS4605 Project : 
+Interactive object designed to monitor various environmental conditions.
 
-We are creating a full-stack project utilizing an Arduino Nano R3 as well as multiple components in order to create the EnviroCube. This will essentially be a 
-portable temperature, air quality, noise pollution, and humidity tracker. All of the data will be transferred towards our user-friendly front end webpage and 
-allow our users to see trends in their local atmosphere. We will also be implementing local data warehousing in case our users want to maintain this data in 
-CSV files for their own purposes.
+***
 
-Please download all the files in this repository in order to have it be fully functional for your use.
+## How to Build
 
-Thank you,
-The team at EnviroCube.
+***
+
+Before running the project, perform the following steps to configure your workflow:
+ - Ensure you have a functional IDE.
+ - Clone the repo onto your device.
+
+Once you have a properly configured workflow, you can now build and commit changes to the project.
+
+## Tech Stack Details
+
+***
+
+|     Technology      | Role |
+|-----------------|-----------------|
+| HTML    | Structure of Web Pages    |
+| JavaScript    |Client-Side Scripting & Interactivity     |
+| CSS |  Styling & Layout      |
+| Python | Backend Programming & Scripting          |
+| SQL   | Database Querying & Management         |
