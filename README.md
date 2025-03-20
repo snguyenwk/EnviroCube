@@ -6,7 +6,6 @@ Interactive object designed to monitor various environmental conditions.
 
 ## How to Build
 
-***
 
 Before running the project, perform the following steps to configure your workflow:
  - Ensure you have a functional IDE.
@@ -16,7 +15,6 @@ Once you have a properly configured workflow, you can now build and commit chang
 
 ## Tech Stack Details
 
-***
 
 |     Technology      | Role |
 |-----------------|-----------------|
