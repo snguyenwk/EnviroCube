@@ -1,0 +1,17 @@
+{
+  "name": "envirocube",
+  "version": "1.0.0",
+  "description": "Interactive Arduino based technology designed to monitor various environmental conditions utilizing sensors and an LED screen for a basic user interface.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "serialport": "^13.0.0"
+  }
+}
