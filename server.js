@@ -7,7 +7,7 @@ const port = 3000;
 
 // Change this to your port (e.g., 'COM3' on Windows or '/dev/ttyACM0' on Linux)
 const arduinoPort = new SerialPort({
-  path: '/dev/ttyACM0', // IDK WHAT IT ACTUALLY IS WITHOUT THE ARDUINO
+  path: '/dev/tty.usbmodem11301', // IDK WHAT IT ACTUALLY IS WITHOUT THE ARDUINO
   baudRate: 9600
 });
 
