@@ -18,11 +18,16 @@ let latestData = 'Waiting for sensor data...';
 
 // When new data comes in from Arduino
 parser.on('data', (line) => {
-  try {
-    latestData = JSON.parse(line.trim());
+  const parts = line.trim().split(',');
+  if (parts.length === 3) {
+    latestData = {
+      sensor: parseInt(parts[0]),
+      category: parts[1],
+      message: parts[2]
+    };
     console.log('Parsed data:', latestData);
-  } catch (err) {
-    console.warn('Bad data received, skipping:', line);
+  } else {
+    console.warn('Malformed line skipped:', line);
   }
 });
 
