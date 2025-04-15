@@ -30,11 +30,11 @@ void loop() {
   // Step 2: Refine the calibrated dB
   float finalDb = refineEstimatedDb(calibratedDb);
 
-  // Output
+  // Send just the numerical value of noise as JSON
   String jsonData = "{\"type\":\"noise\",\"value\":" + String(finalDb, 1) + "}";
-  Serial.println(jsonData);
+  Serial.println(jsonData); // Output to serial monitor
 
-  delay(300);
+  delay(300); // Delay for 300ms before next reading
 }
 
 // Refine final dB estimate based on tested real-world phone data
