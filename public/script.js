@@ -175,6 +175,21 @@ function simulateData() {
     logData('noise', noise);
 }
 
+//fetch data
+async function fetchDataFromServer() {
+    const response = await fetch('/data');
+    const json = await response.json();
+
+    const airValue = json.data.sensor; // or just `json.sensor` if parsed on backend
+    const airCategory = json.data.category;
+    const airMessage = json.data.message;
+
+    document.getElementById('airQuality').innerText = `${airValue} AQI`;
+    // optionally update other UI elements
+
+    logData('air', airValue); // to feed into chart
+}
+
 function updateData(temp, humidity, air, noise) {
     document.getElementById('temperature').innerText = `${temp} °${celsius ? 'C' : 'F'}`;
     document.getElementById('humidity').innerText = `${humidity} %`;
@@ -220,7 +235,7 @@ function changeCardColors(temp, humidity, air) {
     airCard.style.background = `rgb(${red}, ${green}, 0)`; // red to green gradient
 }
 
-setInterval(simulateData, 5000); // Update every 5 seconds (should be every 10 min in final iteration)
+setInterval(fetchDataFromServer, 5000); // Update every 5 seconds (should be every 10 min in final iteration)
 
 function toggleMode() {
     document.body.classList.toggle('dark-mode');
@@ -252,7 +267,7 @@ function toggleTemp() {
 
     // Generate new data based on the new temperature unit
     startTime = Date.now(); // Reset the start time
-    simulateData(); // Immediately simulate new data with the correct unit
+    //simulateData(); // Immediately simulate new data with the correct unit
 
     // Reinitialize the chart with the new temperature data
     updateChart();
