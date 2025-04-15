@@ -6,27 +6,26 @@ void setup()
 {
 	Serial.begin(9600);
 }
-void loop() 
-{
-	//Uncomment whatever type you're using!
-	int readData = DHT.read22(dataPin); // DHT22/AM2302
-	//int readData = DHT.read11(dataPin); // DHT11
 
-	float t = DHT.temperature; // Gets the values of the temperature
-	float h = DHT.humidity; // Gets the values of the humidity
-
-	// Printing the results on the serial monitor
-	Serial.print("Temperature = ");
-	Serial.print(t);
-	Serial.print(" ");
-	Serial.print("°C | ");
-	Serial.print((t * 9.0) / 5.0 + 32.0);//print the temperature in Fahrenheit
-	Serial.print(" ");
-	Serial.println("°F ");
-	Serial.print("Humidity = ");
-	Serial.print(h);
-	Serial.println(" % ");
-	Serial.println("");
-
-	delay(2000); // Delays 2 secods
-}
+void loop() {
+	int readData = DHT.read22(dataPin); // Use DHT22/AM2302
+  
+	if (readData == DHTLIB_OK) {
+	  float t = DHT.temperature;
+	  float h = DHT.humidity;
+  
+	  // Print temperature as JSON
+	  Serial.print("{\"type\":\"temperature\",\"value\":");
+	  Serial.print(t, 1); // 1 decimal precision
+	  Serial.println("}");
+  
+	  // Print humidity as JSON
+	  Serial.print("{\"type\":\"humidity\",\"value\":");
+	  Serial.print(h, 1);
+	  Serial.println("}");
+	} else {
+	  Serial.println("{\"error\": \"DHT sensor read failed\"}");
+	}
+  
+	delay(2000);
+  }

@@ -31,7 +31,6 @@ void loop() {
   float finalDb = refineEstimatedDb(calibratedDb);
 
   // Output
-  Serial.print("dB: ");
   Serial.println(finalDb, 1);
 
   delay(300);

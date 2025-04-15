@@ -5,40 +5,48 @@ const { ReadlineParser } = require('@serialport/parser-readline');
 const app = express();
 const port = 3000;
 
-// Change this to your port (e.g., 'COM3' on Windows or '/dev/ttyACM0' on Linux)
+// Set up the connection to the Arduino
 const arduinoPort = new SerialPort({
-  path: '/dev/tty.usbmodem11301', // IDK WHAT IT ACTUALLY IS WITHOUT THE ARDUINO
+  path: '/dev/tty.usbmodem11301', // Replace with your Arduino's port path
   baudRate: 9600
 });
 
-// Set up a line-by-line parser
+// Set up a parser to read the data line by line
 const parser = arduinoPort.pipe(new ReadlineParser({ delimiter: '\n' }));
 
-let latestData = 'Waiting for sensor data...';
+// Store the latest data for each sensor type
+let sensorData = {
+  temperature: null,
+  humidity: null,
+  noise: null,
+  airQuality: null
+};
 
-// When new data comes in from Arduino
+// Handle incoming data from Arduino
 parser.on('data', (line) => {
-  const parts = line.trim().split(',');
-  if (parts.length === 3) {
-    latestData = {
-      sensor: parseInt(parts[0]),
-      category: parts[1],
-      message: parts[2]
-    };
-    console.log('Parsed data:', latestData);
-  } else {
-    console.warn('Malformed line skipped:', line);
+  try {
+    // Parse the incoming line from Arduino
+    const json = JSON.parse(line.trim());
+    const { type, value } = json;
+
+    // Update the sensor data based on the type
+    if (type && value !== undefined) {
+      sensorData[type] = value;
+    }
+  } catch (e) {
+    console.warn("Received invalid data:", line);
   }
 });
 
-// Serve the data to the frontend
+// Serve the latest data to the frontend
 app.get('/data', (req, res) => {
-  res.json({ data: latestData });
+  res.json(sensorData);
 });
 
-// Serve your index.html from the same folder
+// Serve static files (index.html, etc.)
 app.use(express.static('public'));
 
+// Start the server
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });

@@ -33,17 +33,6 @@ void loop() {
     airMessage = "Severely polluted. Stay inside!";
   }
 
-  // Print results
-  '''
-  Serial.print("Sensor Value: ");
-  Serial.print(sensorValue);
-  Serial.print(" | Air Quality: ");
-  Serial.print(airCategory);
-  Serial.print(" | Message: ");
-  Serial.println(airMessage);
-  '''
-  //Serial.println("{\"sensor\":" + String(sensorValue) + ",\"category\":\"" + airCategory + "\",\"message\":\"" + airMessage + "\"}");
-
   Serial.print(sensorValue);
   Serial.print(",");
   Serial.print(airCategory);
