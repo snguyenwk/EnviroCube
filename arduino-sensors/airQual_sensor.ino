@@ -33,13 +33,10 @@ void loop() {
     airMessage = "Severely polluted. Stay inside!";
   }
 
-  Serial.print(sensorValue);
-  Serial.print(",");
-  Serial.print(airCategory);
-  Serial.print(",");
-  Serial.println(airMessage);
+  String jsonData = "{\"type\":\"environment\",\"temperature\":" + String(sensorValue, 1) + ",\"humidity\":" + String(sensorValue, 1) + "}";
 
-  
+
+  Serial.println(jsonData); 
 
   delay(1000); // Wait 1 second between readings
 }
