@@ -18,8 +18,12 @@ let latestData = 'Waiting for sensor data...';
 
 // When new data comes in from Arduino
 parser.on('data', (line) => {
-  latestData = JSON.parse(line.trim());
-  console.log(`Received: ${latestData}`);
+  try {
+    latestData = JSON.parse(line.trim());
+    console.log('Parsed data:', latestData);
+  } catch (err) {
+    console.warn('Bad data received, skipping:', line);
+  }
 });
 
 // Serve the data to the frontend

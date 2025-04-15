@@ -42,8 +42,16 @@ void loop() {
   Serial.print(" | Message: ");
   Serial.println(airMessage);
   '''
-  Serial.println("{\"sensor\":" + String(sensorValue) + ",\"category\":\"" + airCategory + "\",\"message\":\"" + airMessage + "\"}");
+  //Serial.println("{\"sensor\":" + String(sensorValue) + ",\"category\":\"" + airCategory + "\",\"message\":\"" + airMessage + "\"}");
 
+  Serial.print("{\"sensor\":");
+  Serial.print(sensorValue);
+  Serial.print(",\"category\":\"");
+  Serial.print(airCategory);
+  Serial.print("\",\"message\":\"");
+  Serial.print(airMessage);
+  Serial.println("\"}");
+  
 
   delay(1000); // Wait 1 second between readings
 }
