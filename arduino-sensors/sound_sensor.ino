@@ -31,7 +31,8 @@ void loop() {
   float finalDb = refineEstimatedDb(calibratedDb);
 
   // Output
-  Serial.println(finalDb, 1);
+  String jsonData = "{\"type\":\"noise\",\"value\":" + String(finalDb, 1) + "}";
+  Serial.println(jsonData);
 
   delay(300);
 }
