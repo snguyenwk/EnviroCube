@@ -180,9 +180,19 @@ async function fetchDataFromServer() {
     const response = await fetch('/data');
     const json = await response.json();
 
-    const airValue = json.data.sensor; // or just `json.sensor` if parsed on backend
-    const airCategory = json.data.category;
-    const airMessage = json.data.message;
+    const temp = json.temperature;
+    const humidity = json.humidity;
+    const air = json.airQuality;
+    const noise = json.noise;
+
+    // Update UI
+    updateData(temp, humidity, air, noise);
+
+    // Log to chart
+    logData('temp', temp);
+    logData('humidity', humidity);
+    logData('air', air);
+    logData('noise', noise);
 
     document.getElementById('airQuality').innerText = `${airValue} AQI`;
     // optionally update other UI elements
@@ -235,7 +245,7 @@ function changeCardColors(temp, humidity, air) {
     airCard.style.background = `rgb(${red}, ${green}, 0)`; // red to green gradient
 }
 
-setInterval(fetchDataFromServer, 5000); // Update every 5 seconds (should be every 10 min in final iteration)
+setInterval(fetchDataFromServer, 1000); // Update every 5 seconds (should be every 10 min in final iteration)
 
 function toggleMode() {
     document.body.classList.toggle('dark-mode');
